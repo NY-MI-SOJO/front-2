@@ -1,0 +1,95 @@
+@import './responsive';
+
+.container-h1 {
+    margin: 2rem 0 1rem 0;
+    border-bottom: 2px solid #FF6B6C;
+    width: fit-content;
+    display: inline-block;
+    font-size: 3rem;
+
+}
+
+@include medium-and-below {
+    #Stories_of_the_day > .container-h1{
+        margin-top: 0.6rem  !important;
+        font-size: 2.5rem;
+    }
+    .container-h1 {
+        margin: 2rem 0 1rem 0;
+    }
+}
+
+@include medium-to-large {
+    #homepage{
+        width: fit-content;
+        padding-left: 3rem;
+    }
+    
+    .article-container {
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        flex-wrap: wrap;
+        article {
+            flex-shrink: 0;
+        }
+    }
+}
+
+@include above-large {
+    .article-container {
+        display: flex;
+        flex-wrap: no-wrap;
+        width: fit-content;
+        border-bottom: 1px dotted black;
+        overflow-x: auto;
+        article {
+            flex-shrink: 0;
+        }
+    }
+    #homepage{
+        display: grid;
+        grid-template-columns: minmax(1500px, 1700px) minmax(250px, 500px);
+        main{
+            grid-column: 1 / 2;
+        }
+        aside {
+            border-left: 1px solid rgb(163, 163, 163);
+            grid-column: 2 / 3;
+            div{
+                margin: 2rem 3rem 0 3rem;
+                height: 5rem;
+                background-color: rgb(243, 243, 243);
+            }
+            hr {
+            margin: 2rem 1.5rem;
+            }
+        }
+    }
+}
+
+// .container-h1 {
+//   font-size: 3rem;
+//   margin: 3rem 0 0 3rem !important;
+//   display: inline-block;
+//   border-bottom: 2px solid #FF6B6C;
+//   position: relative;
+//   // font-size: 3rem;
+// }
+
+// #Stories_of_the_day > .container-h1{
+//   margin: 1.5rem 0 0 3rem !important;
+// }
+// .article-container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   width: fit-content;
+//   border-bottom: 1px dotted black;
+//   // overflow-x: hidden;
+//   // overflow-x: auto;
+//   // margin: 0 auto 1rem auto;
+//   article {
+//     flex-shrink: 0;
+//   }
+// }
+

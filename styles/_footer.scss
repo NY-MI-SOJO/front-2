@@ -1,0 +1,38 @@
+$footer-height: 300px;
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    height: $footer-height;         /* Footer height */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    a {
+        // color: white;
+        font-family: "Work sans", sans-serif;
+    } h1 {
+        font-family: "Work sans", sans-serif;
+        // color: white;
+        max-width: 30ch;
+    }
+    nav{
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        margin-top: 2rem;
+        a {
+
+            border-radius: 6px;
+            width: fit-content;
+            border: 1px solid rgba(255, 255, 255, 0.37);
+            padding: 1rem;
+            margin-right: 1rem;
+            &:hover {
+                // background-color: #FF6B6C;
+                // color: white;
+            }
+        }
+    }
+ }
