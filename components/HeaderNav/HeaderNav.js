@@ -28,7 +28,7 @@ const HeaderNav = ({isMobile}) => {
   return (
     <header className="nav-header">
 
-      <h1>NYMI SOJO: Caregivers Project</h1>
+      <h1>New York and Michigan Solutions Journalism Collaborative</h1>
       
       {/* <div className="lang-select">
         <Link href="">English</Link>
@@ -59,6 +59,7 @@ const HeaderNav = ({isMobile}) => {
         <nav id="left-nav">
           <Link href="/#Paid_Caregivers">Paid Caregivers</Link>
           <Link href="/#Unpaid_Caregivers">Family Caregivers</Link>
+          <Link href="/#Poverty">Poverty</Link>
           
         </nav>
       

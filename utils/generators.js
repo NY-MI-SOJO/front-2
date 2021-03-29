@@ -2,15 +2,30 @@ import React from 'react';
 import Article from '../components/Article/Article';
 
 const generateArticleList = (articles) => {
-    let heroSeen = false;
-    return articles.map((article, idx) => {
+  let heroSeen = false;
+  let nArticles = [];
+  let idx = 0;
+  for (let article of articles) {
+  
+    if (article.isHero) {
+      article.isHero = !heroSeen;
+      heroSeen = true;
       if (article.isHero) {
-        article.isHero = !heroSeen;
-        heroSeen = true;
+        nArticles.unshift(<Article articleObj={article} key={idx} />)
+      } else {
+        nArticles.push(<Article articleObj={article} key={idx} />)
       }
-      return <Article articleObj={article} key={idx} />
-    })
+    } else {
+      nArticles.push(<Article articleObj={article} key={idx} />)
+    }
+    idx += 1;
   }
+  if (!heroSeen){
+    articles[0].isHero = true;
+    nArticles[0] = <Article articleObj={articles[0]} key={idx} />
+  } 
+  return nArticles;
+}
  
   const generateSections =  (articlesByTag) => {
     const resultJsx = [];

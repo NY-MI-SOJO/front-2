@@ -10,13 +10,11 @@ const Article = ({ articleObj }) => {
   const myLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`
   }
-  articleObj.imgOrientation = articleObj.imgOrientation === 'Top' ? 't-img' : 'r-img';
   articleObj.classNames = `${articleObj.isHero ? 'hero tl-article' : 't-article'} `;
   articleObj.classNames += `${
     articleObj.articleOrientation === 'Vertical' ? 'v-article' : 'h-article'
   } `;
-  articleObj.imgOrientation =
-    articleObj.imgOrientation === 'Top' ? 't-img' : 'r-img';
+
   return (
     <article className={articleObj.classNames}>
       <section className="img-container">

@@ -19,6 +19,7 @@ const getArticles = async () =>{
         }),
     })
     const resJson = await response.json();
+    console.log(resJson)
     const articleObjects = resJson.data.articles.reduce((restObj, article) =>{
         article.tags.forEach(tag =>{
           restObj[tag.Name] = restObj[tag.Name] ?? []
@@ -35,7 +36,9 @@ const queryVar = `
     query {
         articles {
             Title, Source, Description, Image, imageDescription, isHero, articleOrientation, URI, isHero
-            tags { Name }  
+            tags { 
+                Name, Order
+            }  
         }
     }
 `
