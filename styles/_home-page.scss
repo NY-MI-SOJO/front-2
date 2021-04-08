@@ -37,11 +37,18 @@
 }
 
 @include above-large {
+    main {
+
+        & > section {
+            border-right: 1px dotted rgba(0, 0, 0, 0.3);
+            border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+        }
+    }
     .article-container {
         display: flex;
-        flex-wrap: no-wrap;
+        flex-wrap:wrap;
         width: fit-content;
-        border-bottom: 1px dotted black;
+        
         overflow-x: auto;
         article {
             flex-shrink: 0;
@@ -56,11 +63,7 @@
         aside {
             border-left: 1px solid rgb(163, 163, 163);
             grid-column: 2 / 3;
-            div{
-                margin: 2rem 3rem 0 3rem;
-                height: 5rem;
-                background-color: rgb(243, 243, 243);
-            }
+            
             hr {
             margin: 2rem 1.5rem;
             }

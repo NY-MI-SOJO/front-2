@@ -23,9 +23,15 @@ $footer-height: 300px;
     }
 }
 @include medium-and-below { 
+    #__next{
+        width: 100%;
+    }
     #app {
         margin-top: 15px;
         padding: 0 1rem 15px 1rem;
+        width: 100%;
+        align-items: center;
+        
     }
     img {
         max-width: 100%;
@@ -41,6 +47,9 @@ $footer-height: 300px;
     }
     #footer-clear {
         height: $footer-height;
+    }
+    #date-span{
+        margin-left: 3rem;
     }
 }
 

@@ -1,0 +1,31 @@
+@import './responsive';
+
+#about-page {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    & > article {
+        width: fit-content;
+        padding: 2rem;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        justify-content: space-around;
+        .p-content {
+            max-width: 40ch;
+
+        }
+    }
+}
+
+@include medium-and-below {
+ 
+}
+
+@include medium-to-large {
+   
+}
+
+@include above-large {
+   
+}
+

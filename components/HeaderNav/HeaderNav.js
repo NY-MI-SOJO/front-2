@@ -3,13 +3,28 @@
  * @description Generates the HeaderNav Component
  * @Exports {@component HeaderNav}
  */
-import React, {useReducer} from 'react';
+import {useReducer, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import {getContent} from '../../utils/query';
 
 
 
-const HeaderNav = ({isMobile}) => {
+const HeaderNav = () => {
+  const [pageLinks, setPageLinks] = useState();
+  useEffect(()=>{
+    const fetchTags = async () => {
+      console.log(await getContent("tags"))
+      const tags = await getContent("tags");
+      const links = tags.slice(1, 3).map((tag, idx) => {
+        return <Link key={idx} href={`/#${tag}`.replace(/ /g,"_")} >{tag}</Link>
+      });
+      setPageLinks(links);
+    };
+    fetchTags();
+  },[])
+
+
   function init(){
     return {isMenuVisible: false};
   }
@@ -23,47 +38,33 @@ const HeaderNav = ({isMobile}) => {
     }
     return {isMenuVisible: !state.isMenuVisible }
   }
+  const [state, dispatch] = useReducer(reducer, {isMenuVisible: false}, init);
+ 
 
-  const [state, dispatch] = useReducer(reducer, {isMenuVisible: false}, init)
   return (
     <header className="nav-header">
-
-      <h1>New York and Michigan Solutions Journalism Collaborative</h1>
-      
-      {/* <div className="lang-select">
-        <Link href="">English</Link>
-        <Link href="">Español</Link>
-      </div> */}
-      
+      <a href="/"> <h1>New York and Michigan Solutions Journalism Collaborative</h1> </a>
       <div id="mobile-section-1">
-        <Link className="mobile-logo" href="/"><Image  src="/NYMISOJO.svg" alt="" width={55} height={55}/></Link>
+        <Link className="mobile-logo" href="/"><Image  src="/NYMISOJO.svg" alt="New York and Michigan Solution Journalism Collaborative Logo" width={55} height={55}/></Link>
         <button onClick={()=>{dispatch()}}>
           <img className="hamburger-icon" src={state.isMenuVisible ? "/closeMenu.png" : "/menu.png"} alt="menu button" width="36" height="36" />
         </button>
       </div>
-      
       {state.isMenuVisible && <nav className="hamburger-menu">
-        <Link  href="/Family_Caregivers" >Family Caregivers</Link>
-        <Link href="/Paid_Caregivers">Paid Caregivers</Link>
-        <Link href="/Contact">Contact</Link>
-        <Link href="/About">About</Link>
+        {pageLinks}
+        <Link href="/contact">Engage with us</Link>
+        <Link href="/about">About us</Link>
         <button onClick={()=>{dispatch()}}>
           <img className="hamburger-icon" src="/closeMenu.png"  alt="menu button" width="36" height="36" />
         </button>
       </nav>}
-      
-        <nav id="right-nav">
-          <Link href="/Contact">Contact</Link>
-          <Link href="/About">About</Link>
-        </nav>
-        <nav id="left-nav">
-          <Link href="/#Paid_Caregivers">Paid Caregivers</Link>
-          <Link href="/#Unpaid_Caregivers">Family Caregivers</Link>
-          <Link href="/#Poverty">Poverty</Link>
-          
-        </nav>
-      
-      
+      <nav id="right-nav">
+        <Link href="/contact">Engage with us</Link>
+        <Link href="/about">About us</Link>
+      </nav>
+      <nav id="left-nav">
+        {pageLinks}
+      </nav>
     </header>
   )};
 
