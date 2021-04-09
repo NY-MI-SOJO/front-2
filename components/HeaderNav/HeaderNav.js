@@ -14,7 +14,7 @@ const HeaderNav = () => {
   const [pageLinks, setPageLinks] = useState();
   useEffect(()=>{
     const fetchTags = async () => {
-      console.log(await getContent("tags"))
+      
       const tags = await getContent("tags");
       const links = tags.slice(1, 3).map((tag, idx) => {
         return <Link key={idx} href={`/#${tag}`.replace(/ /g,"_")} >{tag}</Link>
