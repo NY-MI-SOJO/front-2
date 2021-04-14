@@ -17,7 +17,7 @@ function contact() {
             raising awareness about caregiving issues and introducing the community to replicable ideas that have been vetted by a team of
             journalists.
           </p>
-          <p className="p-content">If you have story ideas, the collaborative would like to hear from you. Please e-mail Karen Magnuson,
+          <p className="p-content">If you have story ideas, the collaborative would like to hear from you. Please email Karen Magnuson,
             project director, at karen@solutionsjournalism.org. 
           </p>
           <Image  src="/MagnusonMug2019.JPG" alt="Karen Magnuson" width={194} height={291}></Image>
@@ -44,7 +44,7 @@ function contact() {
           by stress and by lack of access to the Internet and transportation,” Kilian said.
           “And then nearly 75 minutes in, the dots connected. In so many words, the discussion pointed to how the needs of Black 
           and Latino caregivers reflect the racial inequities that have prompted tens of thousands of Americans to take to the streets in protest 
-          since the death of George Floyd in Minneapolis on Memorial Day.” Read more about the forum here.</p>
+          since the death of George Floyd in Minneapolis on Memorial Day.” Read more about the forum<a href="https://www.democratandchronicle.com/story/news/2020/07/05/d-c-and-solutions-journalism-network-focus-caregiving-rochester/5372768002/?fbclid=IwAR1FlSMxKYdT-VA6mqkgLLgNGAn4HKHNDNBcFaRdfI5SpqdqFaKg81Qysbg" target="_blank" tag="nymisojo.com">here</a>. here.</p>
           
         </section>
         <section>

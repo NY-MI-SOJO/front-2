@@ -20,7 +20,7 @@ function about() {
 
         </section>
         <section>        <h1 id="funding">Funding</h1>
-          <p className="p-content">The series on caregivers is made possible through a grant from the Ralph C. Wilson, Jr. Foundation. 
+          <p className="p-content">The series on caregivers is made possible through a grant from the <a href="https://www.ralphcwilsonjrfoundation.org/" target="_blank" tag="nymisojo.com">Ralph C. Wilson, Jr. Foundation</a>. 
           The foundation makes grants in the Western New York and Southeast Michigan regions, honoring Wilson&#39;s connections to both Buffalo and Detroit.</p>
           <p className="p-content">The goal of the collaborative is to provide an essential addition to the media landscape that 
           will grow to include other media organizations and become self-sustaining.  We believe a collaboration between these 
@@ -51,7 +51,7 @@ function about() {
         <section>        <h1 id="about-the-solutions-journalism-network">About the Solutions Journalism Network</h1>
           <p className="p-content">The Solutions Journalism Network’s mission is to spread the practice of solutions journalism: 
           rigorous reporting on responses to social problems. It seeks to rebalance the news, so that everyday people are exposed 
-          to stories that help them understand problems and challenges, and stories that show potential ways to respond. For more information, visit solutionsjournalism.org.</p>
+          to stories that help them understand problems and challenges, and stories that show potential ways to respond. For more information, visit <a href="https://www.solutionsjournalism.org/" target="_blank" >Solutions Journalism Network</a>.</p>
         </section>
       </main>
     </ Layout>
