@@ -6,13 +6,17 @@ import Layout from '../../components/Layout';
 import Head from 'next/head';
 import {getContent} from '../../utils/query';
 import {generateArticleList} from '../../utils/generators';
+import {useState, useEffect} from 'react';
 
 function Section({sectionArticles, tagName}) {
-  const articles = generateArticleList(sectionArticles);
+  const [articles, setArticles] = useState([])
+  useEffect(()=>{
+    setArticles(generateArticleList(sectionArticles))
+  },[])
  return (
    <Layout>
       
-      <section key={tagName.replace(/ /g,"_")} id={tagName}>
+      <section key={tagName} id={tagName}>
         <div className="section-page-h1-div">
           <a href="/"><img className="back-arrow" src="/back.png"/></a>
           <h1 className="container-h1 section-page-ch1">{tagName}</h1>
@@ -31,16 +35,13 @@ export async function getStaticPaths() {
     const paths = tags.map(tag=> {
       return {params: {section: tag.replace(/ /g,"_")}}
     })
-    // Get the paths we want to pre-render based on posts
-  
-    // We'll pre-render only these paths at build time.
-    // { fallback: false } means other routes should 404.
     return { paths, fallback: true }
   }
 
   export async function getStaticProps({params}) {
     const tagName = params.section.replace(/_/g," ");
     const sectionArticles = await getContent("section", tagName);
+    console.log(tagName)
     return {
       props: { sectionArticles,  tagName}, // will be passed to the page component as props
     }

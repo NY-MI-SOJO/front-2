@@ -69,6 +69,7 @@ const getContent = async (type, tag) => {
     case "tags":
       return resJson.data.tags.map(tag => tag.Name)
     case "section":
+      
       return resJson.data.articles;
   }
 }
