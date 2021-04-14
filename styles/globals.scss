@@ -8,6 +8,8 @@ html{
 }
 $footer-height: 300px;
 
+
+
 @include above-large {
     #app {
         max-width: 2000px;
@@ -21,15 +23,14 @@ $footer-height: 300px;
     #footer-clear {
         height: $footer-height;
     }
+
 }
 @include medium-and-below { 
-    #__next{
-        width: 100%;
-    }
+   
     #app {
         margin-top: 15px;
         padding: 0 1rem 15px 1rem;
-        width: 100%;
+        // width: 100%;
         align-items: center;
         
     }
@@ -39,6 +40,7 @@ $footer-height: 300px;
     #footer-clear {
         height: $footer-height;
     }
+   
 }
 @include medium-to-large {
     
@@ -60,7 +62,6 @@ body {
     position: relative;
     margin: 0 auto;
     background-color: rgb(253, 253, 253);
-   
     h1, h2, h3, h4, h5, h6, .subheading, .nav-header a {
         font-family: 'Roboto', sans-serif;
         color: rgb(22, 4, 46);
@@ -80,19 +81,23 @@ body {
     
  
 }
+
+
+
 @import './app';
 
 
 
-
-::-webkit-scrollbar {
-    width: 3px;
-    height: 7px;
-    background-color: rgb(233, 233, 233); 
-}
+html {
+    ::-webkit-scrollbar{
+        width: 3px;
+        height: 7px;
+        background-color: rgb(233, 233, 233); 
+    }
+        
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
     
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-
-    background-color: #b1b1b1; 
+        background-color: #b1b1b1; 
+    }
 }

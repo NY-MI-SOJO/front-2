@@ -10,12 +10,14 @@
    return (
      <footer>
        <div>
-       <h1>Engage with us!</h1>
+       <h1>Talk to us.</h1>
+       <p className="p-content">
+        Do you have a tip, question or comment? Follow us on <a href="https://www.facebook.com/NYMIsojo" target="_blank" tag="nymisojo.com">Facebook</a> or <a href="https://twitter.com/NYMIsojo" target="_blank" tag="nymisojo.com">Twitter</a> (or both) and send us a direct message, or send us an karen@solutionsjournalism.org. 
+       </p>
         <nav>
-          <a href="https://www.facebook.com/NYMIsojo/">Facebook</a>
-          <a href="https://twitter.com/">Twitter</a>
-          <a href="/">nymi[dot]sojo[at]gmail[dot]com</a>
+          <a href="https://www.solutionsjournalism.org/" target="_blank">Solutions Journalism</a>
         </nav>
+        <p className="p-content">	&#169; New York and Michigan Solutions Journalism Collaborative.</p>
        </div>
         
      </footer>

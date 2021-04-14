@@ -9,7 +9,7 @@ import {getContent} from '../utils/query';
 import {generateSections} from '../utils/generators';
 
 export default function Home({articlesByTag}) {
-  const sections = generateSections(articlesByTag);
+  const sections = generateSections(articlesByTag, 4);
   return (
     <>
       <Head>
@@ -28,3 +28,4 @@ export async function getServerSideProps() {
     props: { articlesByTag }, // will be passed to the page component as props
   }
 }
+

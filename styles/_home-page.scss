@@ -6,6 +6,9 @@
     width: fit-content;
     display: inline-block;
     font-size: 3rem;
+    &:hover {
+        color: #FF6B6C;
+    }
 
 }
 
@@ -16,6 +19,9 @@
     }
     .container-h1 {
         margin: 2rem 0 1rem 0;
+    }
+    #homepage{
+        // width: 400px;
     }
 }
 
@@ -46,7 +52,7 @@
     }
     .article-container {
         display: flex;
-        flex-wrap:wrap;
+        flex-wrap:no-wrap;
         width: fit-content;
         
         overflow-x: auto;

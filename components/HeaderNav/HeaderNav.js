@@ -45,7 +45,7 @@ const HeaderNav = () => {
     <header className="nav-header">
       <a href="/"> <h1>New York and Michigan Solutions Journalism Collaborative</h1> </a>
       <div id="mobile-section-1">
-        <Link className="mobile-logo" href="/"><Image  src="/NYMISOJO.svg" alt="New York and Michigan Solution Journalism Collaborative Logo" width={55} height={55}/></Link>
+        <a className="mobile-logo" href="/"><Image  src="/NYMISOJO.svg" alt="New York and Michigan Solution Journalism Collaborative Logo" width={55} height={55}/></a>
         <button onClick={()=>{dispatch()}}>
           <img className="hamburger-icon" src={state.isMenuVisible ? "/closeMenu.png" : "/menu.png"} alt="menu button" width="36" height="36" />
         </button>

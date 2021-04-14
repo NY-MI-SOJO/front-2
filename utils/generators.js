@@ -5,7 +5,7 @@
 import React from 'react';
 import Article from '../components/Article/Article';
 
-const generateArticleList = (articles) => {
+const generateArticleList = (articles, limit = 0) => {
   let heroSeen = false;
   let nArticles = [];
   let idx = 0;
@@ -24,21 +24,26 @@ const generateArticleList = (articles) => {
     }
     idx += 1;
   }
-
-  return nArticles;
+  if (limit > 0 ){
+    return nArticles.slice(0, 5);
+  } else {
+    return nArticles;
+  }
+  
 }
  
-  const generateSections =  (articlesByTag) => {
+  const generateSections =  (articlesByTag, limit) => {
     const resultJsx = [];
     for (const articleGroup in articlesByTag) {
+      const tagNameURL = articlesByTag[articleGroup].name.replace(/ /g,"_");
       resultJsx.push(
-        <section key={articleGroup} id={articlesByTag[articleGroup].name.replace(/ /g,"_")}>
-          <h1 className="container-h1">{articlesByTag[articleGroup].name}</h1>
-          <section className="article-container">{generateArticleList(articlesByTag[articleGroup].articles)}</section>
+        <section key={articleGroup} id={tagNameURL}>
+          <a href={`sections/${tagNameURL}`}><h1 className="container-h1">{articlesByTag[articleGroup].name}</h1></a>
+          <section className="article-container">{generateArticleList(articlesByTag[articleGroup].articles, limit)}</section>
         </section>
       );
     }
     return resultJsx;
   };
 
-  export {generateSections}
+  export {generateSections, generateArticleList}
