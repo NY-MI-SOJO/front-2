@@ -78,7 +78,7 @@ const getContent = async (type, tag, page) => {
     case "tags":
       return resJson.data.tags.map(tag => tag.Name)
     case "section":
-      console.log("-----",response.status, response.statusText, page, resJson)
+      // console.log("-----",response.status, response.statusText, page, resJson)
       return resJson.data.articles;
     case "page":
       
