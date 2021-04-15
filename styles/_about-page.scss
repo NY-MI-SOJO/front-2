@@ -7,6 +7,13 @@
     margin-bottom: 1rem;
 }
 
+#about-page img {
+    
+    margin-left: 1rem !important;
+    margin-top: 1rem;
+    max-height: 400px;
+    
+}
 
 @include medium-and-below {
     #about-page {
@@ -26,7 +33,7 @@
             h1 {
                 font-size: 2.6rem;
             }
-           
+            
 
         }
     }
@@ -49,11 +56,7 @@
                 max-width: 70ch;
                 
             }
-            img {
-                margin-left: 1rem !important;
-                margin-top: 1rem;
-                max-height: 400px;
-            }
+            
             
         }
         
@@ -78,9 +81,7 @@
                 max-width: 70ch;
                 margin-left: 1rem;
             }
-            img {
-                margin-left: 1rem !important;
-            }
+        
             
         }
         
