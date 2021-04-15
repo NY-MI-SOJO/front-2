@@ -88,14 +88,16 @@ body {
 
 html {
     ::-webkit-scrollbar{
-        width: 3px;
+        width: 10px;
         height: 7px;
-        background-color: rgb(233, 233, 233); 
+        background-color: rgb(247, 247, 247); 
     }
         
     ::-webkit-scrollbar-thumb {
         border-radius: 10px;
-    
         background-color: #b1b1b1; 
+        &:hover {
+            background-color: #797979; 
+        }
     }
 }
