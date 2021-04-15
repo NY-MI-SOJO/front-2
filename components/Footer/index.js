@@ -12,7 +12,10 @@
        <div>
        <h1>Talk to us.</h1>
        <p className="p-content">
-        Do you have a tip, question or comment? Follow us on <a href="https://www.facebook.com/NYMIsojo" target="_blank" tag="nymisojo.com">Facebook</a> or <a href="https://twitter.com/NYMIsojo" target="_blank" tag="nymisojo.com">Twitter</a> (or both) and send us a direct message, or send us an email at karen@solutionsjournalism.org. 
+        Do you have a tip, question or comment?
+        </p> 
+        <p className="p-content">
+          Follow us on <a href="https://www.facebook.com/NYMIsojo" target="_blank" tag="nymisojo.com">Facebook</a> or <a href="https://twitter.com/NYMIsojo" target="_blank" tag="nymisojo.com">Twitter</a> (or both) and send us a direct message, or send us an email at <a href="mailto:karen@solutionsjournalism.org">karen@solutionsjournalism.org</a>. 
        </p>
         <nav>
           <a href="https://www.solutionsjournalism.org/" target="_blank">Solutions Journalism</a>
