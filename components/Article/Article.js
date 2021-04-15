@@ -18,16 +18,18 @@ const Article = ({ articleObj }) => {
   return (
     <article className={articleObj.classNames}>
       <section className="img-container">
+      <a href={articleObj.URI} target="_blank" tag="nymisojo.com">
         <img
           className="t-img"
           src={articleObj.Image}
           alt={articleObj.imgAlt}
         />
+        </a>
       </section>
 
       <section className="type-container">
-        <h1><a href={articleObj.URI}>{articleObj.Title}</a></h1>
-        <p className="subheading"><a href={articleObj.URI}>{articleObj.Source}</a></p>
+        <h1><a href={articleObj.URI} target="_blank" tag="nymisojo.com">{articleObj.Title}</a></h1>
+        <p className="subheading"><a href={articleObj.URI} target="_blank" tag="nymisojo.com">{articleObj.Source}</a></p>
         <p className="p-content">
           {articleObj.Description} <a href={articleObj.URI} target="_blank">Read more...</a>
         </p>
