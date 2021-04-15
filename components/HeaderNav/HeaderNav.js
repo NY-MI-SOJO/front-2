@@ -11,13 +11,17 @@ import {getContent} from '../../utils/query';
 
 
 const HeaderNav = () => {
+  /** 
+  * @description Generate headernav via at render links via gql query
+  * @returns returns an array of response objects
+  * @author Adit Garg <adit.garg21k@gmail.com>
+  */
   const [pageLinks, setPageLinks] = useState();
   useEffect(()=>{
     const fetchTags = async () => {
-      
       const tags = await getContent("tags", "", "");
       const links = tags.slice(1, 3).map((tag, idx) => {
-        return <Link key={idx} href={`/#${tag}`.replace(/ /g,"_")} >{tag}</Link>
+        return <Link key={idx} href={`/#${tag}`.replace(/ /g,"_")} >{tag}</Link> // anchor links to h1s for sections
       });
       setPageLinks(links);
     };
@@ -25,10 +29,10 @@ const HeaderNav = () => {
   },[])
 
 
-  function init(){
+  function init(){ // default initial state
     return {isMenuVisible: false};
   }
-  function reducer (state) {
+  function reducer (state) { 
     if (!state.isMenuVisible) {
       document.querySelector(".nav-header").style.position ="sticky";
       document.querySelector(".nav-header").style.height ="100vh";

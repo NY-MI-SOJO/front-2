@@ -29,8 +29,6 @@ function contact({markdownSections}) {
     }))
   },[])
   return (
-
-
     <Layout>
       <Head>
         <title>Engage with us </title>

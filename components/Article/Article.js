@@ -6,10 +6,17 @@
 
 import React from 'react';
 
+/** 
+* @description Scrapes all meta tags and 
+* @param {string} uri must be valid
+* @returns returns 2d array of name and content of tags
+* @example metaScraper(www.abc.com) returns [[nameOfTag, ContentOfTag],[nameOfTag, ContentOfTag]...]
+* @author Adit Garg <adit.garg21k@gmail.com>
+*/
 const Article = ({ articleObj }) => {
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 75}`
-  }
+  // const myLoader = ({ src, width, quality }) => {
+  //   return `${src}?w=${width}&q=${quality || 75}`
+  // }
   articleObj.classNames = `${articleObj.isHero ? 'hero tl-article' : 't-article'} `;
   articleObj.classNames += `${
     articleObj.articleOrientation === 'Vertical' ? 'v-article' : 'h-article'

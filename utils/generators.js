@@ -1,11 +1,21 @@
 /**
  * @author Adit Garg <adit.garg21k@gmail.com>
+ * @description Fetches from the graphql endpoint using the query params provided
+ * @Exports {@function generateSections, @function generateArticleList}
  */
 
 import React from 'react';
 import Article from '../components/Article/Article';
 
 const generateArticleList = (articles, limit = 0) => {
+   /** 
+  * @description organizes aticles into an list and retuns it
+  * @example [HEROARTICLE, article, article, ...]
+  * @param {object} articles
+  * @param {number} limit
+  * @returns returns an list of article components
+  * @author Adit Garg <adit.garg21k@gmail.com>
+  */
   let heroSeen = false;
   let nArticles = [];
   let idx = 0;
@@ -33,6 +43,14 @@ const generateArticleList = (articles, limit = 0) => {
 }
  
   const generateSections =  (articlesByTag, limit) => {
+    /** 
+    * @description organizes sections and its articles into an list and returns it
+    * @example [Featured Content,section, section, ...]
+    * @param {object} articles
+    * @param {number} limit
+    * @returns returns a list of section components
+    * @author Adit Garg <adit.garg21k@gmail.com>
+    */
     const resultJsx = [];
     for (const articleGroup in articlesByTag) {
       const tagNameURL = articlesByTag[articleGroup].name.replace(/ /g,"_");

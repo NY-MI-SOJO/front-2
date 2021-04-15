@@ -9,7 +9,7 @@ import HeaderNav from '../HeaderNav';
 function Layout(props) {
   
   const [date, setDate] = useState();
-  useEffect(()=>{
+  useEffect(()=>{ //google tag setup
     const tempDate = new Date(Date.now());
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     setDate(tempDate.toLocaleDateString(undefined, options));

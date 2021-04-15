@@ -1,7 +1,7 @@
 /**
  * @author Adit Garg <adit.garg21k@gmail.com>
- * @description Fetches from the graphql endpoint using the query provided
- * @Exports {@function getArticles}
+ * @description Fetches from the graphql endpoint using the query params provided
+ * @Exports {@function getContent}
  */
 
 import fetch from 'node-fetch';
@@ -10,7 +10,15 @@ import fetch from 'node-fetch';
 
 
 const getContent = async (type, tag, page) => {
-  const queryArticles = `query {
+  /** 
+  * @description execute gql query based on params passed in
+  * @param {string} type must be section, page, or articles
+  * @param {string} tag must be a type that exists in strapi
+  * @param {string} page aboutPage or contactPage
+  * @returns returns an array of response objects
+  * @author Adit Garg <adit.garg21k@gmail.com>
+  */
+  const queryArticles = `query { 
     articles {
       Title, Source, Description, Image, imageDescription, isHero, articleOrientation, URI, isHero
       tags { 
@@ -21,18 +29,18 @@ const getContent = async (type, tag, page) => {
       Name, Order
     },
     
-  }`
+  }`;
   const querySection = `query {
     articles (where: {tags: {Name: "${tag}"}}){
       Title, Source, Description, Image, imageDescription, isHero, articleOrientation, URI, isHero
         
     },
-  }`
+  }`;
   const queryTags = `query {
     tags (sort: "Order:asc") {
       Name
     }
-  }`
+  }`;
   const queryPage = `query {
     ${page} {
       Page {
@@ -41,13 +49,13 @@ const getContent = async (type, tag, page) => {
         }
       }	
     }
-  }`
-  const queryTable = {
+  }`;
+  const queryTable = { 
     articles: queryArticles,
     tags: queryTags,
     section: querySection,
     page: queryPage
-  }
+  };
   const response = await fetch(
     'https://nymisojo-back.herokuapp.com/graphql', {
     method: 'POST',
@@ -60,7 +68,6 @@ const getContent = async (type, tag, page) => {
     }),
   })
   const resJson = await response.json();
-  
   switch (type) {
     case "articles":
       const articleObjects = resJson.data.articles.reduce((restObj, article) => {
@@ -73,20 +80,20 @@ const getContent = async (type, tag, page) => {
           }
         });
         return restObj;
-      }, {})
+      }, {});
+      // the reducer - returns an array of tag objects with arrays of articles and the tag name
       return resJson.data.tags.map(tag => articleObjects[tag.Name])
     case "tags":
+      // returns an array of tag names
       return resJson.data.tags.map(tag => tag.Name)
     case "section":
-      // console.log("-----",response.status, response.statusText, page, resJson)
+      // returns articles for that tag
       return resJson.data.articles;
     case "page":
-      
+      // returns markdown content for the page
       return resJson.data[page].Page
   }
 }
 
 // getContent({type: "page",page:"aboutPage"})
-
-
 export { getContent };
