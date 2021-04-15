@@ -61,8 +61,8 @@ export async function getStaticPaths() {
 
   export async function getStaticProps({params}) {
     const tagName = params.section.replace(/_/g," ");
-    const sectionArticles = await getContent({type: "section", tag: tagName});
-    console.log(tagName)
+    const sectionArticles = await getContent("section", tagName, "");
+
     return {
       props: { sectionArticles,  tagName}, // will be passed to the page component as props
     }

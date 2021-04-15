@@ -9,7 +9,7 @@ import fetch from 'node-fetch';
 
 
 
-const getContent = async ({type, tag, page}) => {
+const getContent = async (type, tag, page) => {
   const queryArticles = `query {
     articles {
       Title, Source, Description, Image, imageDescription, isHero, articleOrientation, URI, isHero
@@ -60,7 +60,7 @@ const getContent = async ({type, tag, page}) => {
     }),
   })
   const resJson = await response.json();
-  // console.log("-----",response.status, response.statusText, page, resJson)
+  
   switch (type) {
     case "articles":
       const articleObjects = resJson.data.articles.reduce((restObj, article) => {
@@ -78,6 +78,7 @@ const getContent = async ({type, tag, page}) => {
     case "tags":
       return resJson.data.tags.map(tag => tag.Name)
     case "section":
+      console.log("-----",response.status, response.statusText, page, resJson)
       return resJson.data.articles;
     case "page":
       

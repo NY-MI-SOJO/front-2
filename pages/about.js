@@ -58,7 +58,7 @@ function about({markdownSections}) {
   )
 }
 export async function getServerSideProps() {
-  const markdownSections = await getContent({type: "page", page: "aboutPage"});
+  const markdownSections = await getContent("page", "", "aboutPage");
   return {
     props: { markdownSections  }, // will be passed to the page component as props
   }

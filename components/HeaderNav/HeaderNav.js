@@ -15,7 +15,7 @@ const HeaderNav = () => {
   useEffect(()=>{
     const fetchTags = async () => {
       
-      const tags = await getContent({type:"tags"});
+      const tags = await getContent("tags", "", "");
       const links = tags.slice(1, 3).map((tag, idx) => {
         return <Link key={idx} href={`/#${tag}`.replace(/ /g,"_")} >{tag}</Link>
       });

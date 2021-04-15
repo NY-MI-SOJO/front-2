@@ -63,7 +63,7 @@ function contact({markdownSections}) {
 }
 
 export async function getServerSideProps() {
-  const markdownSections = await getContent({type:"page", page:"contactPage"});
+  const markdownSections = await getContent("page", "", "contactPage");
   return {
     props: { markdownSections }, // will be passed to the page component as props
   }

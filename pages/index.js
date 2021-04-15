@@ -43,7 +43,7 @@ export default function Home({articlesByTag}) {
 }
 
 export async function getServerSideProps() {
-  const articlesByTag = await getContent({type: "articles"});
+  const articlesByTag = await getContent("articles", "", "");
   return {
     props: { articlesByTag }, // will be passed to the page component as props
   }
