@@ -29,7 +29,7 @@ const Article = ({ articleObj }) => {
         <h1><a href={articleObj.URI}>{articleObj.Title}</a></h1>
         <p className="subheading"><a href={articleObj.URI}>{articleObj.Source}</a></p>
         <p className="p-content">
-          {articleObj.Description} <a href={articleObj.URI}>Read more...</a>
+          {articleObj.Description} <a href={articleObj.URI} target="_blank">Read more...</a>
         </p>
       </section>
     </article>

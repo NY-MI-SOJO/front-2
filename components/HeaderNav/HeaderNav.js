@@ -15,7 +15,7 @@ const HeaderNav = () => {
   useEffect(()=>{
     const fetchTags = async () => {
       
-      const tags = await getContent("tags");
+      const tags = await getContent({type:"tags"});
       const links = tags.slice(1, 3).map((tag, idx) => {
         return <Link key={idx} href={`/#${tag}`.replace(/ /g,"_")} >{tag}</Link>
       });
@@ -52,14 +52,14 @@ const HeaderNav = () => {
       </div>
       {state.isMenuVisible && <nav className="hamburger-menu">
         {pageLinks}
-        <Link href="/contact">Engage with us</Link>
+        <Link href="/contact">Contact us</Link>
         <Link href="/about">About us</Link>
         <button onClick={()=>{dispatch()}}>
           <img className="hamburger-icon" src="/closeMenu.png"  alt="menu button" width="36" height="36" />
         </button>
       </nav>}
       <nav id="right-nav">
-        <Link href="/contact">Engage with us</Link>
+        <Link href="/contact">Contact us</Link>
         <Link href="/about">About us</Link>
       </nav>
       <nav id="left-nav">

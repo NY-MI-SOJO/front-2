@@ -9,7 +9,7 @@ import fetch from 'node-fetch';
 
 
 
-const getContent = async (type, tag) => {
+const getContent = async ({type, tag, page}) => {
   const queryArticles = `query {
     articles {
       Title, Source, Description, Image, imageDescription, isHero, articleOrientation, URI, isHero
@@ -33,10 +33,20 @@ const getContent = async (type, tag) => {
       Name
     }
   }`
+  const queryPage = `query {
+    ${page} {
+      Page {
+        ... on ComponentSectionSection {
+          Content
+        }
+      }	
+    }
+  }`
   const queryTable = {
     articles: queryArticles,
     tags: queryTags,
-    section: querySection
+    section: querySection,
+    page: queryPage
   }
   const response = await fetch(
     'https://nymisojo-back.herokuapp.com/graphql', {
@@ -49,11 +59,10 @@ const getContent = async (type, tag) => {
       variables: {},
     }),
   })
-  
   const resJson = await response.json();
+  // console.log("-----",response.status, response.statusText, page, resJson)
   switch (type) {
     case "articles":
-      console.log(resJson)
       const articleObjects = resJson.data.articles.reduce((restObj, article) => {
         article.tags.forEach(tag => {
           if (tag.Name in restObj) {
@@ -69,12 +78,14 @@ const getContent = async (type, tag) => {
     case "tags":
       return resJson.data.tags.map(tag => tag.Name)
     case "section":
-      
       return resJson.data.articles;
+    case "page":
+      
+      return resJson.data[page].Page
   }
 }
 
-// getContent("section","Featured content")
+// getContent({type: "page",page:"aboutPage"})
 
 
 export { getContent };
