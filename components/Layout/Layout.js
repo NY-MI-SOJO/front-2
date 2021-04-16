@@ -16,7 +16,7 @@ function Layout(props) {
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments)}
     gtag('js', new Date());
-    gtag('config', 'G-1KJQRCHQ4M', {
+    gtag('config', 'G-LRC9C3QCYJ', {
       page_location: window.location.href,
       page_path: window.location.pathname,
       page_title: window.document.title,
@@ -30,7 +30,7 @@ function Layout(props) {
         {props.children}
       </div>
       <div id="footer-clear" />
-      <Footer />
+      <Footer footerContent={props.footerContent} />
     </>
   )
 }

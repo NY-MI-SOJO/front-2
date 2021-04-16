@@ -25,7 +25,7 @@ const Article = ({ articleObj }) => {
   return (
     <article className={articleObj.classNames}>
       <section className="img-container">
-      <a href={articleObj.URI} target="_blank" tag="nymisojo.com">
+      <a href={articleObj.URI} target="_blank" tag="https://nymisojo.com">
         <img
           className="t-img"
           src={articleObj.Image}
@@ -35,10 +35,10 @@ const Article = ({ articleObj }) => {
       </section>
 
       <section className="type-container">
-        <h1><a href={articleObj.URI} target="_blank" tag="nymisojo.com">{articleObj.Title}</a></h1>
-        <p className="subheading"><a href={articleObj.URI} target="_blank" tag="nymisojo.com">{articleObj.Source}</a></p>
+        <h1><a href={articleObj.URI} target="_blank" tag="https://nymisojo.com">{articleObj.Title}</a></h1>
+        <p className="subheading"><a href={articleObj.URI} target="_blank" tag="https://nymisojo.com">{articleObj.Source}</a></p>
         <p className="p-content">
-          {articleObj.Description} <a href={articleObj.URI} target="_blank">Read more...</a>
+          {articleObj.Description} <a href={articleObj.URI} tag="https://nymisojo.com" target="_blank">Read more...</a>
         </p>
       </section>
     </article>

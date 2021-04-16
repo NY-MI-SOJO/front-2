@@ -9,7 +9,7 @@ import Head from 'next/head';
 import {getContent} from '../utils/query';
 import {useEffect, useState} from 'react';
 
-function contact({markdownSections}) {
+function contact({markdownSections, footerContent}) {
   const markdownOptions = {
     wrapper: "section",
     forceBlock: true,
@@ -18,6 +18,12 @@ function contact({markdownSections}) {
       p: {
         props: {
           className: "p-content"
+        }
+      },
+      a: {
+        props: {
+          target: "_blank",
+          tag: "https://nymisjo.com"
         }
       }
     }
@@ -29,11 +35,11 @@ function contact({markdownSections}) {
     }))
   },[])
   return (
-    <Layout>
+    <Layout footerContent={footerContent}>
       <Head>
         <title>Engage with us </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KJQRCHQ4M" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LRC9C3QCYJ" />
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
         <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />
@@ -62,8 +68,9 @@ function contact({markdownSections}) {
 
 export async function getServerSideProps() {
   const markdownSections = await getContent("page", "", "contactPage");
+  const footerContent = await getContent("footer","","");
   return {
-    props: { markdownSections }, // will be passed to the page component as props
+    props: { markdownSections, footerContent }, // will be passed to the page component as props
   }
 }
 

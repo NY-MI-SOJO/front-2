@@ -9,14 +9,14 @@ import {getContent} from '../utils/query';
 import {generateSections} from '../utils/generators';
 
 
-export default function Home({articlesByTag}) {
+export default function Home({articlesByTag, embedLinks, footerContent}) {
   const sections = generateSections(articlesByTag, 4);
   return (
     <>
       <Head>
         <title>NY&MI SOJO</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KJQRCHQ4M" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LRC9C3QCYJ" />
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
         <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />
@@ -35,8 +35,8 @@ export default function Home({articlesByTag}) {
         <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <Layout>
-        <HomePage sections={sections}/>
+      <Layout footerContent={footerContent}>
+        <HomePage sections={sections} embedLinks={embedLinks} />
       </Layout>
     </>
   )
@@ -44,8 +44,10 @@ export default function Home({articlesByTag}) {
 
 export async function getServerSideProps() {
   const articlesByTag = await getContent("articles", "", "");
+  const embedLinks = await getContent("embedLinks","","");
+  const footerContent = await getContent("footer","","");
   return {
-    props: { articlesByTag }, // will be passed to the page component as props
+    props: { articlesByTag, embedLinks, footerContent }, // will be passed to the page component as props
   }
 }
 

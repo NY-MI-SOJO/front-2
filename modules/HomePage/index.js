@@ -3,7 +3,7 @@
  */
 import React, {useEffect} from 'react';
 
-const HomePage = ({ sections }) => {
+const HomePage = ({ sections, embedLinks }) => {
   /**
   * @description Homepage Component
   * @returns Homepage component
@@ -19,10 +19,14 @@ const HomePage = ({ sections }) => {
         {sections}
       </main>
         <aside>
-        <a className="twitter-timeline" data-width="300" data-height="600" data-theme="light" href="https://twitter.com/NYMIsojo?ref_src=twsrc%5Etfw">Tweets by NYMIsojo</a>
-        <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-        <hr />
-        <div className="typeform-widget" data-url="https://form.typeform.com/to/WWyjHR7E?typeform-medium=embed-snippet" data-hide-headers="true" data-hide-footer="true" style={{width: 100+"%", height: 500+"px"}}></div> 
+        {embedLinks.twitterEmbed.visible && <>
+          <a className="twitter-timeline" data-width="300" data-height="600" data-theme="light" href={embedLinks.twitterEmbed.url}>Tweets by NYMIsojo</a>
+          <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+          <hr />
+        </>}
+        {embedLinks.typeformEmbed.visible && 
+          <div className="typeform-widget" data-url="https://form.typeform.com/to/WWyjHR7E?typeform-medium=embed-snippet" data-hide-headers="true" data-hide-footer="true" style={{width: 100+"%", height: 500+"px"}}></div> 
+        }
       </aside> 
     </div>
   );

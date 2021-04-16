@@ -28,12 +28,23 @@ const getContent = async (type, tag, page) => {
     tags (sort: "Order:asc") {
       Name, Order
     },
-    
+  }`;
+  const queryEmbedLinks = `query {
+    twitterEmbed {
+      url, visible
+    }
+  	typeformEmbed {
+      data_url, visible
+    }
+  }`;
+  const queryFooter = `query {
+    footer {
+      Content  
+    },
   }`;
   const querySection = `query {
     articles (where: {tags: {Name: "${tag}"}}){
-      Title, Source, Description, Image, imageDescription, isHero, articleOrientation, URI, isHero
-        
+      Title, Source, Description, Image, imageDescription, isHero, articleOrientation, URI, isHero  
     },
   }`;
   const queryTags = `query {
@@ -54,10 +65,12 @@ const getContent = async (type, tag, page) => {
     articles: queryArticles,
     tags: queryTags,
     section: querySection,
-    page: queryPage
+    page: queryPage,
+    embedLinks:  queryEmbedLinks,
+    footer: queryFooter
   };
   const response = await fetch(
-    'https://nymisojo-back.herokuapp.com/graphql', {
+    'https://admin.nymisojo.com/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -66,7 +79,7 @@ const getContent = async (type, tag, page) => {
       query: queryTable[type],
       variables: {},
     }),
-  })
+  });
   const resJson = await response.json();
   switch (type) {
     case "articles":
@@ -91,7 +104,12 @@ const getContent = async (type, tag, page) => {
       return resJson.data.articles;
     case "page":
       // returns markdown content for the page
-      return resJson.data[page].Page
+      return resJson.data[page].Page;
+    case "embedLinks":
+      // returns embedded links for typeform and twitter w/ visibility
+      return resJson.data;
+    case "footer":
+      return resJson.data;
   }
 }
 

@@ -4,25 +4,35 @@
  * @Exports {@component Footer}
  */
  import React from 'react';
+ import Markdown, {compiler} from 'markdown-to-jsx';
+ import {useEffect, useState} from 'react';
 
- const Footer = () => {
-   
+ const Footer = ({footerContent}) => {
+  const markdownOptions = {
+    wrapper: "div",
+    forceBlock: true,
+    forceWrapper: true,
+    overrides: {
+      p: {
+        props: {
+          className: "p-content"
+        }
+      },
+      a: {
+        props: {
+          target: "_blank",
+          tag: "https://nymisjo.com"
+        }
+      }
+    }
+  }
+  const [jsxSections, setjsxSections] = useState();
+  useEffect(()=>{
+    setjsxSections(compiler(footerContent.footer.Content, markdownOptions))
+  },[])
    return (
      <footer>
-       <div>
-       <h1>Talk to us.</h1>
-       <p className="p-content">
-        Do you have a tip, question or comment?
-        </p> 
-        <p className="p-content">
-          Follow us on <a href="https://www.facebook.com/NYMIsojo" target="_blank" tag="nymisojo.com">Facebook</a> or <a href="https://twitter.com/NYMIsojo" target="_blank" tag="nymisojo.com">Twitter</a> (or both) and send us a direct message, or send us an email at <a href="mailto:karen@solutionsjournalism.org">karen@solutionsjournalism.org</a>. 
-       </p>
-        <nav>
-          <a href="https://www.solutionsjournalism.org/" target="_blank">Solutions Journalism</a>
-        </nav>
-        <p className="p-content">	&#169; New York and Michigan Solutions Journalism Collaborative.</p>
-       </div>
-        
+       {jsxSections}
      </footer>
    );
  };

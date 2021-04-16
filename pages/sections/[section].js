@@ -9,17 +9,17 @@ import {getContent} from '../../utils/query';
 import {generateArticleList} from '../../utils/generators';
 import {useState, useEffect} from 'react';
 
-function Section({sectionArticles, tagName}) {
+function Section({sectionArticles, tagName, footerContent}) {
   const [articles, setArticles] = useState([]);
   useEffect(()=>{
     setArticles(generateArticleList(sectionArticles))
   },[]);
  return (
-   <Layout>
+   <Layout footerContent={footerContent}>
       <Head>
         <title>{tagName} </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KJQRCHQ4M" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LRC9C3QCYJ" />
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
         <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />
@@ -62,8 +62,9 @@ export async function getStaticPaths() {
   export async function getStaticProps({params}) {
     const tagName = params.section.replace(/_/g," "); // turn page paths into names
     const sectionArticles = await getContent("section", tagName); 
+    const footerContent = await getContent("footer","","");
     return {
-      props: { sectionArticles,  tagName}, // will be passed to the page component as props
+      props: { sectionArticles,  tagName, footerContent}, // will be passed to the page component as props
     }
   }
 
