@@ -1,7 +1,12 @@
 {
   "name": "nymosojo-front2",
-  "version": "0.1.0",
+  "version": "2.0",
   "private": true,
+  "author": "Adit Garg <adit.garg21k@gmail.com> (http://aditgarg.me/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NY-MI-SOJO/front-2.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
