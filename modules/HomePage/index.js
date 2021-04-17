@@ -25,7 +25,7 @@ const HomePage = ({ sections, embedLinks }) => {
           <hr />
         </>}
         {embedLinks.typeformEmbed.visible && 
-          <div className="typeform-widget" data-url="https://form.typeform.com/to/WWyjHR7E?typeform-medium=embed-snippet" data-hide-headers="true" data-hide-footer="true" style={{width: 100+"%", height: 500+"px"}}></div> 
+          <div className="typeform-widget" data-url={embedLinks.typeformEmbed.data_url} data-hide-headers="true" data-hide-footer="true" style={{width: 100+"%", height: 500+"px"}}></div> 
         }
       </aside> 
     </div>

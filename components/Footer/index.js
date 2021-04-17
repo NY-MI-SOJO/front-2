@@ -21,7 +21,8 @@
       a: {
         props: {
           target: "_blank",
-          tag: "https://nymisjo.com"
+          tag: "https://nymisjo.com",
+          rel: "noopener"
         }
       }
     }

@@ -1,55 +1,5 @@
 @import './responsive';
 
-// .nav-header {
-//   display:grid;
-//   grid-template-columns: 1fr 1fr 1fr;
-//   max-height: 200px;
-//   border-bottom:1px solid rgb(163, 163, 163);
-//   padding-top: 1.3rem;
-//   padding-bottom: 1rem;
-//   margin-bottom: 1rem;
-//   font-weight: 400;
-//   align-items: center;
-//   h1 {
-//     text-align: center;
-//     margin: 0 !important;
-//     font-weight: 300;
-//     grid-column: 2 / 3;
-//     color: #FF6B6C;
-//     // color: #FFC600;
-//     // color: #26C485;
-//   }
-//   // .lang-select {
-//   //   text-align: center;
-//   //   grid-column: 2 / 3;
-//   //   grid-row: 2 / 3;
-//   //   a {
-//   //     margin: 0 1rem;
-//   //   }
-//   // }
-//   nav{
-//     display: flex;
-//     flex-direction: row-reverse;
-//     justify-content: space-evenly;
-//     align-items: center;
-//     a {
-//       font-size: 1.2rem; 
-//     }
-//     &#left-nav a:last-child {
-//       font-size:0; 
-//       line-height: 0;
-//     }
-    
-//   }
-//   #left-nav{
-//     grid-row: 1 / 2;
-//     grid-column: 1 / 2;
-//   }
-//   #right-nav{
-//     grid-row: 1 / 2;
-//     grid-column: 3 / 4;
-//   }
-// }
 
 @include above-medium{
     .nav-header {
