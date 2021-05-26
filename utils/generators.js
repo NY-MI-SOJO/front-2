@@ -52,12 +52,12 @@ const generateArticleList = (articles, limit = 0) => {
     * @author Adit Garg <adit.garg21k@gmail.com>
     */
     const resultJsx = [];
-    for (const articleGroup in articlesByTag) {
-      const tagNameURL = articlesByTag[articleGroup].name.replace(/ /g,"_");
+    for (const articleGroup of articlesByTag) {
+      const tagNameURL = articleGroup.Name.replace(/ /g,"_");
       resultJsx.push(
-        <section key={articleGroup} id={tagNameURL}>
-          <a href={`sections/${tagNameURL}`}><h1 className="container-h1">{articlesByTag[articleGroup].name}</h1></a>
-          <section className="article-container">{generateArticleList(articlesByTag[articleGroup].articles, limit)}</section>
+        <section key={articleGroup.Name} id={tagNameURL}>
+          <a href={`sections/${tagNameURL}`}><h1 className="container-h1">{articleGroup.Name}</h1></a>
+          <section className="article-container">{generateArticleList(articleGroup.articles, limit)}</section>
         </section>
       );
     }

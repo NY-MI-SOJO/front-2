@@ -19,14 +19,11 @@ const getContent = async (type, tag, page) => {
   * @author Adit Garg <adit.garg21k@gmail.com>
   */
   const queryArticles = `query { 
-    articles {
-      Title, Source, Description, Image, imageDescription, isHero, articleOrientation, URI, isHero
-      tags { 
-          Name, Order
-      }  
-    },
     tags (sort: "Order:asc") {
       Name, Order
+     articles (sort: "createdAt:desc"){
+      Title, Source, Description, createdAt, Image, imageDescription, isHero, articleOrientation, URI, isHero
+    },
     },
   }`;
   const queryEmbedLinks = `query {
@@ -83,19 +80,7 @@ const getContent = async (type, tag, page) => {
   const resJson = await response.json();
   switch (type) {
     case "articles":
-      const articleObjects = resJson.data.articles.reduce((restObj, article) => {
-        article.tags.forEach(tag => {
-          if (tag.Name in restObj) {
-            restObj[tag.Name].articles.push(article);
-          } else {
-            restObj[tag.Name] = { articles: [], name: tag.Name }
-            restObj[tag.Name].articles.push(article);
-          }
-        });
-        return restObj;
-      }, {});
-      // the reducer - returns an array of tag objects with arrays of articles and the tag name
-      return resJson.data.tags.map(tag => articleObjects[tag.Name])
+      return resJson.data.tags;
     case "tags":
       // returns an array of tag names
       return resJson.data.tags.map(tag => tag.Name)
