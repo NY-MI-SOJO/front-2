@@ -73,6 +73,33 @@
             hr {
             margin: 2rem 1.5rem;
             }
+            #resource_guide {
+                height: 200px;
+                margin: 2rem 0 2rem 1rem;
+                a {
+                    margin: 2rem 0 3rem 0;
+                    border-radius: 13px;
+                    padding:2rem 1rem;
+                    background-color: #FF6B6C;
+                    color:white;
+                    text-decoration: none;
+                    font-family: 'Roboto';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 24px;
+                    height: 300px;
+                    line-height: 28px;
+
+color: #FFFFFF;
+
+                }
+                p {
+                    font-family: 'Roboto';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                }
+            }
         }
     }
 }

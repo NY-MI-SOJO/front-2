@@ -15,10 +15,21 @@ const HomePage = ({ sections, embedLinks }) => {
   },[])
   return (
     <div id="homepage">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/jpQcG5HdNOw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <main>
         {sections}
       </main>
         <aside>
+          <div id="resource_guide">
+
+            <a href='https://sites.google.com/view/caregiverresourceguide' target='_blank' >Resource Guide</a>
+            <p>The resource guide features
+              resources for caregivers that 
+              empower and enable them to
+              do what they love with the
+              help of the resources they need</p>
+          </div>
+          <hr />
         {embedLinks.twitterEmbed.visible && <>
           <a className="twitter-timeline" data-width="300" data-height="600" data-theme="light" href={embedLinks.twitterEmbed.url}>Tweets by NYMIsojo</a>
           <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>

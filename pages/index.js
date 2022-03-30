@@ -14,7 +14,7 @@ export default function Home({articlesByTag, embedLinks, footerContent}) {
   return (
     <>
       <Head>
-        <title>NY&MI SOJO</title>
+        <title>New York and Michigan Solutions Journalism Collaborative</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="The New York & Michigan Solutions Journalism Collaborative (NYMI SOJO) is a group of news, education and media outlets pooling time, talent and resources to cover chronic problems with a solutions lens. It is modeled on other successful news collaboratives supported by the Solutions Journalism Network. 
         Our inaugural project, Invisible Army: Caregiving on the Front Lines, will produce rigorous reporting on successful responses to challenges experienced by caregivers and older adults." />
@@ -39,6 +39,7 @@ export default function Home({articlesByTag, embedLinks, footerContent}) {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Layout footerContent={footerContent}>
+      
         <HomePage sections={sections} embedLinks={embedLinks} />
       </Layout>
     </>
