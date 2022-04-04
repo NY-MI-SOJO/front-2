@@ -15,7 +15,18 @@ const HomePage = ({ sections, embedLinks }) => {
   },[])
   return (
     <div id="homepage">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/jpQcG5HdNOw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <section>
+      <a href={`sections/`}><h1 className="container-h1">Videos</h1></a>
+          <section className="article-container videos-container">
+            <iframe width="378" height="238" src="https://www.youtube.com/embed/jpQcG5HdNOw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="378" height="238" src="https://www.youtube.com/embed/tgOYLMlhz8w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="378" height="238" src="https://www.youtube.com/embed/JEHUE7rKX9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </section>
+        </section>
+      
+      <div>
+      
+      </div>
       <main>
         {sections}
       </main>
