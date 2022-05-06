@@ -41,6 +41,16 @@ const generateArticleList = (articles, limit = 0) => {
   }
   
 }
+
+const generateAllArticleList = (articles) => {
+  let idx = 0;
+  const resultJsx = [];
+  for (let article of articles) {
+    resultJsx.push(<Article articleObj={article} isArchive={true} key={idx} />);
+    idx++;
+  }
+  return resultJsx;
+}
  
   const generateSections =  (articlesByTag, limit) => {
     /** 
@@ -64,4 +74,20 @@ const generateArticleList = (articles, limit = 0) => {
     return resultJsx;
   };
 
-  export {generateSections, generateArticleList}
+  const generateCarouselSlides = (slides) => {
+    const resultJsx = [];
+    for (const slide of slides) {
+      
+      resultJsx.push(
+        <a href={slide.URL} target="_blank">
+          <div>
+            <img alt="" src={`https://admin.nymisojo.com${slide.image.url}`} />
+          </div>
+        </a>
+        
+      );
+    }
+    return resultJsx;
+  }
+
+  export {generateSections, generateArticleList, generateAllArticleList, generateCarouselSlides}
