@@ -13,14 +13,21 @@ import React from 'react';
 * @example metaScraper(www.abc.com) returns [[nameOfTag, ContentOfTag],[nameOfTag, ContentOfTag]...]
 * @author Adit Garg <adit.garg21k@gmail.com>
 */
-const Article = ({ articleObj }) => {
+const Article = ({ articleObj, isArchive }) => {
   // const myLoader = ({ src, width, quality }) => {
   //   return `${src}?w=${width}&q=${quality || 75}`
   // }
-  articleObj.classNames = `${articleObj.isHero ? 'hero tl-article' : 't-article'} `;
-  articleObj.classNames += `${
-    articleObj.articleOrientation === 'Vertical' ? 'v-article' : 'h-article'
-  } `;
+  if (isArchive) {
+    articleObj.classNames = 'h-article';
+  } else {
+    articleObj.classNames = `${articleObj.isHero ? 'hero tl-article' : 't-article'} `;
+    articleObj.classNames += `${
+      articleObj.articleOrientation === 'Vertical' ? ' v-article' : ' h-article'
+    } `;
+  
+  }
+  
+  
 
   return (
     <article className={articleObj.classNames}>

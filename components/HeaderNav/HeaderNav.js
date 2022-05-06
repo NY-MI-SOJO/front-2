@@ -20,7 +20,7 @@ const HeaderNav = () => {
   useEffect(()=>{
     const fetchTags = async () => {
       const tags = await getContent("tags", "", "");
-      const links = tags.slice(1, 3).map((tag, idx) => {
+      const links = tags.map((tag, idx) => {
         return <Link key={idx} href={`/#${tag}`.replace(/ /g,"_")} >{tag}</Link> // anchor links to h1s for sections
       });
       setPageLinks(links);
@@ -33,13 +33,13 @@ const HeaderNav = () => {
     return {isMenuVisible: false};
   }
   function reducer (state) { 
-    if (!state.isMenuVisible) {
-      document.querySelector(".nav-header").style.position ="sticky";
-      document.querySelector(".nav-header").style.height ="100vh";
-    } else {
-      document.querySelector(".nav-header").style.position ="static";
-      document.querySelector(".nav-header").style.height ="100%";
-    }
+    // if (!state.isMenuVisible) {
+    //   document.querySelector(".nav-header").style.position ="sticky";
+    //   document.querySelector(".nav-header").style.height ="100vh";
+    // } else {
+    //   document.querySelector(".nav-header").style.position ="static";
+    //   document.querySelector(".nav-header").style.height ="100%";
+    // }
     return {isMenuVisible: !state.isMenuVisible }
   }
   const [state, dispatch] = useReducer(reducer, {isMenuVisible: false}, init);
@@ -50,25 +50,35 @@ const HeaderNav = () => {
       <a href="/"> <h1>New York and Michigan Solutions Journalism Collaborative</h1> </a>
       <div id="mobile-section-1">
         <a className="mobile-logo" href="/"><Image  src="/NYMISOJO.png" alt="New York and Michigan Solution Journalism Collaborative Logo" width={69} height={55}/></a>
-        <button onClick={()=>{dispatch()}}>
+        <button className="hamburger-btn" onClick={()=>{dispatch()}}>
           <img className="hamburger-icon" src={state.isMenuVisible ? "/closeMenu.png" : "/menu.png"} alt="menu button" width="36" height="36" />
         </button>
       </div>
-      {state.isMenuVisible && <nav className="hamburger-menu">
-        {pageLinks}
-        <Link href="/contact">Contact us</Link>
+      {state.isMenuVisible && <>
+        <hr className='hamburger-hr' />
+        <nav className="hamburger-menu">
+          {pageLinks}
+          <Link href="/archive">Archive</Link>
+          <Link href="/contact">Contact us</Link>
         <Link href="/about">About us</Link>
-        <button onClick={()=>{dispatch()}}>
-          <img className="hamburger-icon" src="/closeMenu.png"  alt="menu button" width="36" height="36" />
-        </button>
-      </nav>}
+          {/* <Link href="/contact">Contact us</Link>
+          <Link href="/about">About us</Link> */}
+          {/* <button onClick={()=>{dispatch()}}>
+            <img className="hamburger-icon" src="/closeMenu.png"  alt="menu button" width="36" height="36" />
+          </button> */}
+        </nav>
+      </>}
       <nav id="right-nav">
         <Link href="/contact">Contact us</Link>
         <Link href="/about">About us</Link>
       </nav>
       <nav id="left-nav">
-        {pageLinks}
+        
+        <button  className="hamburger-btn"  onClick={()=>{dispatch()}}>
+          <img className="hamburger-icon" src={state.isMenuVisible ? "/closeMenu.png" : "/menu.png"} alt="menu button" width="36" height="36" />
+        </button>
       </nav>
+      
     </header>
   )};
 

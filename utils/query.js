@@ -18,6 +18,11 @@ const getContent = async (type, tag, page) => {
   * @returns returns an array of response objects
   * @author Adit Garg <adit.garg21k@gmail.com>
   */
+  const queryAllArticles = `query { 
+     articles (sort: "createdAt:desc"){
+      Title, Source, Description, createdAt, Image, imageDescription, isHero, articleOrientation, URI, isHero
+    },
+  }`;
   const queryArticles = `query { 
     tags (sort: "Order:asc") {
       Name, Order
@@ -58,13 +63,33 @@ const getContent = async (type, tag, page) => {
       }	
     }
   }`;
+  const queryEvents = `query { 
+    events {
+      Name, StartDateTime, EndDateTime, Description, EventURL
+    }
+  }`;
+  const queryCarousel = `query {
+    mainPageCarousel {
+      Slides {
+        ... on ComponentSlideCarouselSlide {
+          URL
+          image {
+            url
+          }
+        }
+      }
+    }
+  }`;
   const queryTable = { 
     articles: queryArticles,
+    allArticles: queryAllArticles,
     tags: queryTags,
     section: querySection,
     page: queryPage,
     embedLinks:  queryEmbedLinks,
-    footer: queryFooter
+    footer: queryFooter,
+    events: queryEvents,
+    carousel: queryCarousel
   };
   const response = await fetch(
     'https://admin.nymisojo.com/graphql', {
@@ -77,10 +102,13 @@ const getContent = async (type, tag, page) => {
       variables: {},
     }),
   });
+  
   const resJson = await response.json();
   switch (type) {
     case "articles":
       return resJson.data.tags;
+    case "allArticles":
+      return resJson.data.articles;
     case "tags":
       // returns an array of tag names
       return resJson.data.tags.map(tag => tag.Name)
@@ -94,6 +122,10 @@ const getContent = async (type, tag, page) => {
       // returns embedded links for typeform and twitter w/ visibility
       return resJson.data;
     case "footer":
+      return resJson.data;
+    case "events":
+      return resJson.data;
+    case "carousel":
       return resJson.data;
   }
 }

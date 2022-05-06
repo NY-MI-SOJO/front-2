@@ -6,11 +6,13 @@ import Head from 'next/head';
 import HomePage from '../modules/HomePage/index';
 import Layout from '../components/Layout';
 import {getContent} from '../utils/query';
-import {generateSections} from '../utils/generators';
+import {generateSections, generateCarouselSlides} from '../utils/generators';
 
 
-export default function Home({articlesByTag, embedLinks, footerContent}) {
+export default function Home({articlesByTag, embedLinks, footerContent, carouselContent}) {
   const sections = generateSections(articlesByTag, 4);
+  const carouselSlides = generateCarouselSlides(carouselContent?.mainPageCarousel?.Slides);
+
   return (
     <>
       <Head>
@@ -40,7 +42,7 @@ export default function Home({articlesByTag, embedLinks, footerContent}) {
       </Head>
       <Layout footerContent={footerContent}>
       
-        <HomePage sections={sections} embedLinks={embedLinks} />
+        <HomePage sections={sections} embedLinks={embedLinks} carouselSlides={carouselSlides}/>
       </Layout>
     </>
   )
@@ -50,8 +52,9 @@ export async function getServerSideProps() {
   const articlesByTag = await getContent("articles", "", "");
   const embedLinks = await getContent("embedLinks","","");
   const footerContent = await getContent("footer","","");
+  const carouselContent = await getContent("carousel","","");
   return {
-    props: { articlesByTag, embedLinks, footerContent }, // will be passed to the page component as props
+    props: { articlesByTag, embedLinks, footerContent, carouselContent}, // will be passed to the page component as props
   }
 }
 
