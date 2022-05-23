@@ -40,7 +40,14 @@
          <meta name="theme-color" content="#ffffff" />
        </Head>
        <main id="archive-page">
-         {jsxArticles}
+          <h1 id='page-title'>Archive</h1>
+          <section id='articles-container'>
+
+          
+
+            {jsxArticles}
+          
+         </section>
  
        </main>
      </ Layout>

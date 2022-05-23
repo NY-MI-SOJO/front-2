@@ -7,6 +7,7 @@
 import React from 'react';
 import Article from '../components/Article/Article';
 
+
 const generateArticleList = (articles, limit = 0) => {
    /** 
   * @description organizes aticles into an list and retuns it
@@ -42,6 +43,25 @@ const generateArticleList = (articles, limit = 0) => {
   
 }
 
+const generateVideoList = (videos, limit = 0) => {
+  /** 
+
+ * @author Adit Garg <adit.garg21k@gmail.com>
+ */
+  let idx = 0;
+  const videoList = []
+  for (let video of videos) {     
+    videoList.push(<div dangerouslySetInnerHTML={{__html: video.EmbedVideo}} />)
+    idx += 1;
+  }
+ if (limit > 0 ){
+   return videoList.slice(0, 5);
+ } else {
+   return videoList;
+ }
+ 
+}
+
 const generateAllArticleList = (articles) => {
   let idx = 0;
   const resultJsx = [];
@@ -52,7 +72,7 @@ const generateAllArticleList = (articles) => {
   return resultJsx;
 }
  
-  const generateSections =  (articlesByTag, limit) => {
+  const generateSections =  (articlesByTag, limit, videos) => {
     /** 
     * @description organizes sections and its articles into an list and returns it
     * @example [Featured Content,section, section, ...]
@@ -64,12 +84,22 @@ const generateAllArticleList = (articles) => {
     const resultJsx = [];
     for (const articleGroup of articlesByTag) {
       const tagNameURL = articleGroup.Name.replace(/ /g,"_");
-      resultJsx.push(
-        <section key={articleGroup.Name} id={tagNameURL}>
-          <a href={`sections/${tagNameURL}`}><h1 className="container-h1">{articleGroup.Name}</h1></a>
-          <section className="article-container">{generateArticleList(articleGroup.articles, limit)}</section>
+     console.log(tagNameURL)
+      if (tagNameURL=== "Videos") {
+        resultJsx.push(
+          <section key="Videos" id="Videos">
+          <a href={"sections/Videos"}><h1 className="container-h1">Videos</h1></a>
+          <section className="article-container">{generateVideoList(videos, limit)}</section>
         </section>
-      );
+        )
+      } else {
+        resultJsx.push(
+          <section key={articleGroup.Name} id={tagNameURL}>
+            <a href={`sections/${tagNameURL}`}><h1 className="container-h1">{articleGroup.Name}</h1></a>
+            <section className="article-container">{generateArticleList(articleGroup.articles, limit)}</section>
+          </section>
+        );
+      }
     }
     return resultJsx;
   };
@@ -90,4 +120,4 @@ const generateAllArticleList = (articles) => {
     return resultJsx;
   }
 
-  export {generateSections, generateArticleList, generateAllArticleList, generateCarouselSlides}
+  export {generateSections, generateArticleList, generateAllArticleList, generateCarouselSlides, generateVideoList}

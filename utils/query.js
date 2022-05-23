@@ -80,6 +80,12 @@ const getContent = async (type, tag, page) => {
       }
     }
   }`;
+  const queryVideos = `query {
+    videos (sort: "createdAt:desc"){
+      EmbedVideo
+    }
+  }
+  `;
   const queryTable = { 
     articles: queryArticles,
     allArticles: queryAllArticles,
@@ -89,7 +95,8 @@ const getContent = async (type, tag, page) => {
     embedLinks:  queryEmbedLinks,
     footer: queryFooter,
     events: queryEvents,
-    carousel: queryCarousel
+    carousel: queryCarousel,
+    Videos: queryVideos
   };
   const response = await fetch(
     'https://admin.nymisojo.com/graphql', {
@@ -98,7 +105,7 @@ const getContent = async (type, tag, page) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      query: queryTable[type],
+      query: queryTable[page === "Videos" ? "Videos": type],
       variables: {},
     }),
   });
@@ -114,6 +121,7 @@ const getContent = async (type, tag, page) => {
       return resJson.data.tags.map(tag => tag.Name)
     case "section":
       // returns articles for that tag
+      if (page === "Videos") return  resJson.data.videos;
       return resJson.data.articles;
     case "page":
       // returns markdown content for the page
@@ -127,6 +135,10 @@ const getContent = async (type, tag, page) => {
       return resJson.data;
     case "carousel":
       return resJson.data;
+    case "Videos":
+      
+      return resJson.data.videos;
+      
   }
 }
 

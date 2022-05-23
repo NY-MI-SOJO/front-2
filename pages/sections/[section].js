@@ -6,13 +6,18 @@
 import Layout from '../../components/Layout';
 import Head from 'next/head';
 import {getContent} from '../../utils/query';
-import {generateArticleList} from '../../utils/generators';
+import {generateArticleList, generateVideoList} from '../../utils/generators';
 import {useState, useEffect} from 'react';
 
 function Section({sectionArticles, tagName, footerContent}) {
   const [articles, setArticles] = useState([]);
   useEffect(()=>{
-    setArticles(generateArticleList(sectionArticles))
+    if (tagName === "Videos") {
+      setArticles(generateVideoList(sectionArticles))
+      // console.log(articles, generateVideoList(sectionArticles), sectionArticles)
+    } else {
+      setArticles(generateArticleList(sectionArticles))
+    }
   },[]);
  return (
    <Layout footerContent={footerContent}>
@@ -64,7 +69,16 @@ export async function getStaticPaths() {
 
   export async function getStaticProps({params}) {
     const tagName = params.section.replace(/_/g," "); // turn page paths into names
-    const sectionArticles = await getContent("section", tagName); 
+    let videos, sectionArticles;
+    if (tagName === "Videos") {
+      sectionArticles = await getContent("section", "Videos","Videos"); 
+     
+      
+    }
+    else {
+      sectionArticles = await getContent("section", tagName);
+    }
+    // console.log(sectionArticles)
     const footerContent = await getContent("footer","","");
     return {
       props: { sectionArticles,  tagName, footerContent}, // will be passed to the page component as props
