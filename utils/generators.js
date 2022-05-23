@@ -105,7 +105,7 @@ const generateAllArticleList = (articles) => {
       const tagNameURL = articleGroup.Name.replace(/ /g,"_");
       if (tagNameURL=== "Videos") {
         resultJsx.push(
-          <section key="Videos" id="Videos">
+          <section key="Videos" id="Videos" className='videos_container'>
           <a href={"sections/Videos"}><h1 className="container-h1">Videos</h1></a>
           <section className="article-container">{generateVideoList(videos, limit)}</section>
         </section>
