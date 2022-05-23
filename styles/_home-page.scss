@@ -41,7 +41,11 @@
     }
 }
 
-.videos_container * {
+.videos_container {
+    overflow-x: scroll;
+}
+
+.videos_container div {
     margin-right: 1rem;
 }
 
