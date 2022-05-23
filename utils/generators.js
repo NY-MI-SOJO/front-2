@@ -72,6 +72,25 @@ const generateAllArticleList = (articles) => {
   return resultJsx;
 }
  
+  const generateEventsList = (eventsData, limit = 0) => {
+    const resultJsx = [];
+    const options = {month: 'short', day: 'numeric' };
+    
+    for (let oneEvent of eventsData?.events){
+      let tempDate = new Date(oneEvent.StartDateTime);
+      
+      let eventDate = tempDate.toLocaleDateString(undefined,options).toUpperCase().split(' ');
+      resultJsx.push(
+        <a href={oneEvent.EventURL} target="_blank">
+          <section className='calendar-event-card'>
+            <div className="left-date"><h2>{eventDate[1]}</h2><span>{eventDate[0]}</span></div>
+            <div className="right-info"><h1>{oneEvent.Name}</h1><p>{oneEvent.Description}</p></div>
+          </section>
+        </a>
+      )
+    }
+    return resultJsx;
+  }
   const generateSections =  (articlesByTag, limit, videos) => {
     /** 
     * @description organizes sections and its articles into an list and returns it
@@ -84,7 +103,6 @@ const generateAllArticleList = (articles) => {
     const resultJsx = [];
     for (const articleGroup of articlesByTag) {
       const tagNameURL = articleGroup.Name.replace(/ /g,"_");
-     console.log(tagNameURL)
       if (tagNameURL=== "Videos") {
         resultJsx.push(
           <section key="Videos" id="Videos">
@@ -120,4 +138,4 @@ const generateAllArticleList = (articles) => {
     return resultJsx;
   }
 
-  export {generateSections, generateArticleList, generateAllArticleList, generateCarouselSlides, generateVideoList}
+  export {generateSections, generateArticleList, generateAllArticleList, generateCarouselSlides, generateVideoList, generateEventsList}

@@ -54,6 +54,7 @@ const getContent = async (type, tag, page) => {
       Name
     }
   }`;
+ 
   const queryPage = `query {
     ${page} {
       Page {
@@ -96,6 +97,7 @@ const getContent = async (type, tag, page) => {
     footer: queryFooter,
     events: queryEvents,
     carousel: queryCarousel,
+    events: queryEvents,
     Videos: queryVideos
   };
   const response = await fetch(
@@ -135,8 +137,9 @@ const getContent = async (type, tag, page) => {
       return resJson.data;
     case "carousel":
       return resJson.data;
+    case "events":
+      return resJson.data.events;
     case "Videos":
-      
       return resJson.data.videos;
       
   }

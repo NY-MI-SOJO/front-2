@@ -9,7 +9,7 @@ import {getContent} from '../utils/query';
 import {generateSections, generateCarouselSlides} from '../utils/generators';
 
 
-export default function Home({articlesByTag, embedLinks, footerContent, carouselContent, videos}) {
+export default function Home({articlesByTag, embedLinks, footerContent, carouselContent, videos, events}) {
   const sections = generateSections(articlesByTag, 4, videos);
   const carouselSlides = generateCarouselSlides(carouselContent?.mainPageCarousel?.Slides);
   return (
@@ -41,7 +41,7 @@ export default function Home({articlesByTag, embedLinks, footerContent, carousel
       </Head>
       <Layout footerContent={footerContent}>
       
-        <HomePage sections={sections} embedLinks={embedLinks} carouselSlides={carouselSlides}/>
+        <HomePage sections={sections} embedLinks={embedLinks} carouselSlides={carouselSlides} events={events}/>
       </Layout>
     </>
   )
@@ -53,8 +53,9 @@ export async function getServerSideProps() {
   const footerContent = await getContent("footer","","");
   const carouselContent = await getContent("carousel","","");
   const videos = await getContent("Videos","","");
+  const events = await getContent("events","","");
   return {
-    props: { articlesByTag, embedLinks, footerContent, carouselContent, videos}, // will be passed to the page component as props
+    props: { articlesByTag, embedLinks, footerContent, carouselContent, videos, events}, // will be passed to the page component as props
   }
 }
 
