@@ -136,7 +136,6 @@ const getContent = async (type, tag, page) => {
     case "events":
       return resJson.data;
     case "carousel":
-      console.log(resJson.data)
       return resJson.data;
     case "events":
       return resJson.data.events;
