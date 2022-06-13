@@ -124,13 +124,12 @@ const generateAllArticleList = (articles) => {
 
   const generateCarouselSlides = (slides) => {
     const resultJsx = [];
-    console.log(slides)
     for (const slide of slides) {
       
       resultJsx.push(
         <a href={slide.URL} target="_blank">
           <div>
-            <img alt="" src={`https://admin.nymisojo.com${slide.image.url}`} />
+            <img alt="" src={`https://admin.nymisojo.com${slide?.Media?.url}`} />
           </div>
         </a>
         
