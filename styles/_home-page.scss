@@ -12,7 +12,102 @@
 
 }
 
+aside > section {
+    margin-left: 1rem;
+    h1 {
+        font-size: 1.4rem;
+    
+    }
+    .calendar-event-card {
+        display: flex;
+        // background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(247, 247, 247);
+        border-radius: 13px;
+        align-content: center;
+        justify-content: center;
+        padding: 1rem;
+        .left-date {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-right: .6rem;
+            padding-right: .6rem;
+            border-right: 2px solid white;
+            h2 {
+                font-family: 'Roboto';
+                font-weight: 500;
+                font-size: 2.3rem;
+                margin: 0;
+            }
+            span {
+                font-size: 1rem;
+            }
+           
+        }
+        .right-info {
+            h1 {
+                font-family: 'Roboto';
+                font-weight: 500;
+                font-size: 1.2rem;
+                margin: 0 0 .2rem 0;
+            }
+            
+            p {
+                margin: 0;
+                font-family: 'Roboto';
+                color: black;
+            }
+            
+        }
+        &:hover {
+            background-color: #FF6B6C;
+            .right-info, .left-date {
+                h1, p, h2, span {
 
+                    color:white;
+                }
+            }
+            
+        }
+        
+        
+    }
+}
+
+
+#resource_guide {  
+    margin: 2rem 0 2rem 1rem;
+    a {
+        margin: 2rem 0 1rem 0;
+        border-radius: 13px;
+        padding:2rem 1rem;
+        background-color: #FF6B6C;
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        div { 
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: 'Roboto';
+            font-style: normal;
+            max-width: 8ch;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 28px; 
+            margin-right: 1rem;
+         }
+
+    }
+    p {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+    }
+}
 
 .carousel .control-dots .dot {
     box-shadow: none !important;
@@ -67,6 +162,7 @@
         }
     }
     
+    
 }
 
 @include above-large {
@@ -120,94 +216,8 @@
             hr {
             margin: 2rem 1.5rem;
             }
-            .calendar-event-card {
-                display: flex;
-                margin: 1rem;
-                // background-color: rgb(255, 255, 255);
-                border: 1px solid rgb(247, 247, 247);
-                border-radius: 13px;
-                align-content: center;
-                justify-content: center;
-                padding: 1rem;
-                .left-date {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    margin-right: .6rem;
-                    padding-right: .6rem;
-                    border-right: 2px solid white;
-                    h2 {
-                        font-family: 'Roboto';
-                        font-weight: 500;
-                        font-size: 2.3rem;
-                        margin: 0;
-                    }
-                    span {
-                        font-size: 1rem;
-                    }
-                   
-                }
-                .right-info {
-                    h1 {
-                        font-family: 'Roboto';
-                        font-weight: 500;
-                        font-size: 1.2rem;
-                        margin: 0 0 .2rem 0;
-                    }
-                    
-                    p {
-                        margin: 0;
-                        font-family: 'Roboto';
-                        color: black;
-                    }
-                    
-                }
-                &:hover {
-                    background-color: #FF6B6C;
-                    .right-info, .left-date {
-                        h1, p, h2, span {
-
-                            color:white;
-                        }
-                    }
-                    
-                }
-                
-                
-            }
-            #resource_guide {  
-                margin: 2rem 0 2rem 1rem;
-                a {
-                    margin: 2rem 0 1rem 0;
-                    border-radius: 13px;
-                    padding:2rem 1rem;
-                    background-color: #FF6B6C;
-                    
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                    div { 
-                        color: #FFFFFF;
-                        text-decoration: none;
-                        font-family: 'Roboto';
-                        font-style: normal;
-                        max-width: 8ch;
-                        font-weight: 700;
-                        font-size: 24px;
-                        line-height: 28px; 
-                        margin-right: 1rem;
-                     }
-
-                }
-                p {
-                    font-family: 'Roboto';
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 16px;
-                }
-            }
+            
+            
         }
     }
 }

@@ -34,14 +34,18 @@ const HomePage = ({ sections, embedLinks, carouselSlides, events}) => {
             <a href='https://sites.google.com/view/caregiving-resource-guide/home' target='_blank' >
               <div>Resource <br />Guide</div><img src="/arrow.png" width={46} height={22}/>
             </a>
-            <p>The resource guide features
+            <p className="p-content">The resource guide features
               resources for caregivers that 
               empower and enable them to
               do what they love with the
               help of the resources they need</p>
           </section>
           <hr />
+          <section>
+
+            <h1>Upcoming events</h1>
             {eventListJSX}
+          </section>
           <hr />
         {embedLinks.twitterEmbed.visible && <>
           <a className="twitter-timeline" data-width="300" data-height="600" data-theme="light" href={embedLinks.twitterEmbed.url}>Tweets by NYMIsojo</a>

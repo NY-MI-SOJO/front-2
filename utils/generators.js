@@ -84,7 +84,7 @@ const generateAllArticleList = (articles) => {
         <a href={oneEvent.EventURL} target="_blank">
           <section className='calendar-event-card'>
             <div className="left-date"><h2>{eventDate[1]}</h2><span>{eventDate[0]}</span></div>
-            <div className="right-info"><h1>{oneEvent.Name}</h1><p>{oneEvent.Description}</p></div>
+            <div className="right-info"><h1>{oneEvent.Name}</h1><p className='p-content'>{oneEvent.Description}</p></div>
           </section>
         </a>
       )
